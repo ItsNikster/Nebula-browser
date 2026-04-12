@@ -1,0 +1,33 @@
+{
+  "name": "nebula-browser-shell",
+  "version": "0.1.0",
+  "productName": "Nebula",
+  "author": "nikol",
+  "description": "Custom Chromium-based workspace browser shell with isolated profiles, downloads, history, bookmarks, and Ghostery-powered ad blocking.",
+  "license": "MIT",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build:win": "node scripts/build-win.js"
+  },
+  "keywords": [
+    "electron",
+    "browser",
+    "workspace",
+    "desktop",
+    "chromium",
+    "adblock"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@ghostery/adblocker-electron": "2.14.1",
+    "cross-fetch": "4.1.0"
+  },
+  "devDependencies": {
+    "@electron/packager": "19.1.0",
+    "electron": "41.1.1"
+  }
+}

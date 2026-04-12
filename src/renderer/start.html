@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action https://www.google.com"
+    />
+    <title>Nebula Start</title>
+    <link rel="stylesheet" href="./start.css" />
+  </head>
+  <body>
+    <div class="aurora aurora-left"></div>
+    <div class="aurora aurora-right"></div>
+    <main class="start-shell">
+      <section class="search-section" aria-label="Speed dial search">
+        <form class="start-search" action="https://www.google.com/search" method="GET">
+          <span class="google-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+              <path fill="#4285F4" d="M21.8 12.2c0-.75-.07-1.47-.2-2.17H12v4.1h5.5a4.72 4.72 0 0 1-2.04 3.1v2.58h3.3c1.93-1.78 3.04-4.4 3.04-7.6Z"/>
+              <path fill="#34A853" d="M12 22c2.75 0 5.05-.9 6.73-2.42l-3.3-2.58c-.92.62-2.08 1-3.43 1-2.64 0-4.87-1.78-5.66-4.17H2.93v2.66A10 10 0 0 0 12 22Z"/>
+              <path fill="#FBBC05" d="M6.34 13.83A6 6 0 0 1 6 12c0-.63.12-1.24.34-1.83V7.5H2.93A10 10 0 0 0 2 12c0 1.6.38 3.1.93 4.5l3.41-2.67Z"/>
+              <path fill="#EA4335" d="M12 5.98c1.5 0 2.84.52 3.9 1.53l2.92-2.92C17.04 2.94 14.75 2 12 2A10 10 0 0 0 2.93 7.5l3.41 2.67C7.13 7.76 9.36 5.98 12 5.98Z"/>
+            </svg>
+          </span>
+          <input name="q" type="text" autocomplete="off" spellcheck="false" placeholder="Search Google or type a URL" autofocus />
+        </form>
+      </section>
+
+      <section class="dial-grid" id="dialGrid" aria-label="Quick links"></section>
+    </main>
+
+    <dialog class="shortcut-dialog" id="shortcutDialog">
+      <form class="shortcut-form" method="dialog" id="shortcutForm">
+        <h2>Add shortcut</h2>
+        <p>Choose the site you want on your speed dial.</p>
+        <label>
+          <span>Website</span>
+          <input id="shortcutUrlInput" type="text" maxlength="2048" placeholder="https://example.com" required />
+        </label>
+        <label>
+          <span>Name</span>
+          <input id="shortcutNameInput" type="text" maxlength="32" placeholder="Optional" />
+        </label>
+        <div class="shortcut-actions">
+          <button class="shortcut-button secondary" id="shortcutCancelButton" type="button">Cancel</button>
+          <button class="shortcut-button primary" value="default" type="submit">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <template id="shortcutCardTemplate">
+      <a class="dial-card custom-shortcut" href="#">
+        <button class="shortcut-remove" type="button" aria-label="Remove shortcut">x</button>
+        <span class="shortcut-logo-shell">
+          <img class="shortcut-logo" alt="" loading="lazy" />
+          <span class="shortcut-fallback" aria-hidden="true"></span>
+        </span>
+        <span class="dial-title"></span>
+        <span class="dial-host"></span>
+      </a>
+    </template>
+
+    <script src="./start.js"></script>
+  </body>
+</html>
