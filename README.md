@@ -73,6 +73,57 @@ If you want to rebuild cleanly, delete the old `release/` folder first and run:
 ```powershell
 npm.cmd run build:win
 ```
+## Release Notes
+
+Current public baseline release:
+- `v0.1.0`
+
+Release highlights:
+- custom Chromium-based workspace browser shell for Windows
+- isolated workspace sessions and custom browser UI
+- bookmarks, downloads, history, and start page support
+- Ghostery-powered ad blocking integration
+- source build and Windows packaging flow
+
+Full project history is tracked in [CHANGELOG.md](CHANGELOG.md).
+
+## Packaging Guidance
+
+Nebula currently ships as a portable Windows package, not an installer.
+
+Recommended release flow:
+
+1. Install dependencies:
+
+```powershell
+npm.cmd install
+```
+
+2. Build the Windows package:
+
+```powershell
+npm.cmd run build:win
+```
+
+3. Verify the packaged app starts correctly:
+
+```text
+release\Nebula-win32-x64\Nebula.exe
+```
+
+4. Create a release archive from the packaged folder:
+
+```powershell
+Compress-Archive -Path .\release\Nebula-win32-x64\* -DestinationPath .\release\Nebula-win32-x64.zip -Force
+```
+
+5. Upload the `.zip` file to GitHub Releases.
+
+Packaging notes:
+- upload the packaged `.zip` to `Releases`, not to the main branch
+- do not commit `release/` or `node_modules/`
+- the whole packaged folder should stay together because `Nebula.exe` depends on bundled resources and binaries
+- there is currently no MSI/installer pipeline; the portable package is the intended release artifact
 
 ## Screenshots
 
